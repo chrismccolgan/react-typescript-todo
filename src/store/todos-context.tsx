@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+
 import Todo from '../models/todo';
 
 type TodosContextObj = {
@@ -29,19 +29,19 @@ const TodosContextProvider: React.FC = (props) => {
     setTodos((prevTodos) => {
       return prevTodos.filter((todo) => todo.id !== todoId);
     });
-
-    const contextValue: TodosContextObj = {
-      items: todos,
-      addTodo: addTodoHandler,
-      removeTodo: removeTodoHandler,
-    };
-
-    return (
-      <TodosContext.Provider value={contextValue}>
-        {props.children}
-      </TodosContext.Provider>
-    );
   };
+
+  const contextValue: TodosContextObj = {
+    items: todos,
+    addTodo: addTodoHandler,
+    removeTodo: removeTodoHandler,
+  };
+
+  return (
+    <TodosContext.Provider value={contextValue}>
+      {props.children}
+    </TodosContext.Provider>
+  );
 };
 
 export default TodosContextProvider;
